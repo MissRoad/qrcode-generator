@@ -2,8 +2,6 @@
 
 一个使用基于google Zxing生成二维码的小程序.
 
-```
-
 ## Author
 
 - Blog：http://sylvanassun.github.io/
