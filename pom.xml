@@ -24,8 +24,13 @@
         <slf4j.version>1.7.5</slf4j.version>
     </properties>
 
-
     <dependencies>
+        <!-- Zxing生成二维码工具库 -->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.2.0</version>
+        </dependency>
 
         <!--Spring MVC-->
         <dependency>
@@ -57,13 +62,6 @@
             <artifactId>jsp-api</artifactId>
             <version>${jsp.version}</version>
             <scope>provided</scope>
-        </dependency>
-
-        <!--Spring Context Support-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${springframework.version}</version>
         </dependency>
 
         <!--Jackson-->
@@ -129,13 +127,6 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-access</artifactId>
             <version>${logback.version}</version>
-        </dependency>
-
-        <!-- Zxing生成二维码工具库 -->
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>core</artifactId>
-            <version>3.1.0</version>
         </dependency>
     </dependencies>
 
