@@ -16,16 +16,15 @@ public class WebApplicationInitializer implements org.springframework.web.WebApp
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
-        AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-        //注册配置类
-        context.register(SpringMvcConfig.class);
+        AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
+        //注册Spring MVC配置类
+        ctx.register(SpringMvcConfig.class);
         //关联ServletContext
-        context.setServletContext(servletContext);
-        //注册DispatcherServlet
+        ctx.setServletContext(servletContext);
+        //配置Spring MVC的DispatcherServlet
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher",
-                new DispatcherServlet(context));
+                new DispatcherServlet(ctx));
         dispatcher.addMapping("/");
         dispatcher.setLoadOnStartup(1);
-        dispatcher.setAsyncSupported(true);
     }
 }
