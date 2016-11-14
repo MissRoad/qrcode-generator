@@ -5,7 +5,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -42,15 +45,6 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
     }
 
     /**
-     * 路径匹配参数设置
-     */
-    @Override
-    public void configurePathMatch(PathMatchConfigurer configurer) {
-        // 设置不忽略"."后面的参数
-        configurer.setUseSuffixPatternMatch(false);
-    }
-
-    /**
      * 页面跳转控制器
      */
     @Override
@@ -66,4 +60,5 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
         multipartResolver.setMaxUploadSize(1000000);
         return multipartResolver;
     }
+
 }

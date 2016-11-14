@@ -8,6 +8,7 @@ import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.sylvanas.qrcode.model.LogoConfig;
 import com.sylvanas.qrcode.service.QRCodeService;
+import org.springframework.stereotype.Service;
 import sun.misc.BASE64Encoder;
 
 import javax.imageio.ImageIO;
@@ -26,6 +27,7 @@ import java.util.Map;
  * <p>
  * Created by sylvanasp on 2016/11/11.
  */
+@Service
 public class QRCodeServiceImpl implements QRCodeService {
 
     private static final int QRCOLOR = 0xFF000000;   //默认是黑色
@@ -40,10 +42,18 @@ public class QRCodeServiceImpl implements QRCodeService {
     public String getLogoQRCode(String url, HttpServletRequest request, String productName) {
         // 获得Logo图片的路径
         String filePath = request.getSession().getServletContext()
-                .getRealPath("/") + "resources/images/logoImages/logo.png";
+                .getRealPath("/") + "WEB-INF/classes/assets/images/logoImages/logo.png";
+        File logoDir = new File(filePath);
+        if(!logoDir.exists()) {
+            logoDir.mkdirs();
+        }
         // 获得二维码文件保存的路径
         String imagePath = request.getSession().getServletContext()
-                .getRealPath("/") + "resources/images/qrcodeImages/";
+                .getRealPath("/") + "WEB-INF/classes/assets/images/qrcodeImages/";
+        File imageDir = new File(imagePath);
+        if(!imageDir.exists()) {
+            imageDir.mkdirs();
+        }
         try {
             BufferedImage bim = this.getQRCodeBufferedImage(url, BarcodeFormat.QR_CODE, 400, 400,
                     this.getDecodeHintType());
@@ -63,8 +73,11 @@ public class QRCodeServiceImpl implements QRCodeService {
     public String createSimpleQRCode(String url, HttpServletRequest request) {
         //设置二维码文件保存的路径
         String imagePath = request.getSession().getServletContext()
-                .getRealPath("/") + "resources/images/qrcodeImages/";
-
+                .getRealPath("/") + "WEB-INF/classes/assets/images/qrcodeImages/";
+        File dirFile = new File(imagePath);
+        if(!dirFile.exists()) {
+            dirFile.mkdirs();
+        }
         int width = 344;
         int height = 344;
         String format = "png";

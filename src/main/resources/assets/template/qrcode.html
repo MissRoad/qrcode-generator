@@ -1,0 +1,13 @@
+<div class="row">
+    <label for="qrcodeContent" class="col-md-2 control-label">Url:</label>
+    <div class="col-md-2">
+        <input id="qrcodeContent" type="text" ng-model="qrcodeContent"/>
+        <!--<area id="qrcodeContent" class="text-area" ng-model="qrcodeContent"/>-->
+        <button class="btn btn-primary" ng-click="generate()">生成</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <img id="qrcodeImage">
+    </div>
+</div>

@@ -1,7 +1,9 @@
 package com.sylvanas.qrcode.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -11,9 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CommonController {
 
-    @RequestMapping("/hello")
+    @RequestMapping("/")
+    public String index() {
+        return "index";
+    }
+
+    @RequestMapping(value = "/hello",produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
     public String hello() {
-        return "hello";
+        return "Hello,World!";
     }
 
 }
