@@ -7,9 +7,13 @@ actionApp.controller('commonsController',['$scope','$http',
            console.log("页面加载完毕!");
         });
 
-        var hello = $scope.hello;
-        $http.get("hello").success(function(data){
-            hello = data;
+        jQuery.ajax({
+            url:"/hello",
+            type:"GET",
+            dataType:"json",
+            success : function (data) {
+                $("#helloDiv").val(data);
+            }
         });
     }
 ]);

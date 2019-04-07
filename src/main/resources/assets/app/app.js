@@ -5,12 +5,12 @@
 var actionApp = angular.module('actionApp',['ngRoute']);
 //配置路由
 actionApp.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.when('/qrcode',
+    $routeProvider
+        .when('/qrcode',
         {
             controller:'qrcodeController',
             templateUrl:'assets/template/qrcode.html'
-        }
-    )
+        })
         .when('/hello',
             {
                 controller:'commonsController',
